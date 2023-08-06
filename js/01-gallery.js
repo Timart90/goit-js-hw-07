@@ -15,8 +15,8 @@ function createrImg (arr) {
     />
   </a>
 </li>`).join('')
-
 };
+
 const ul = document.querySelector('.gallery');
 
 ul.addEventListener('click', handlerClick);
@@ -25,6 +25,11 @@ ul.insertAdjacentHTML('beforeend', createrImg(galleryItems));
 
 function handlerClick(e) {
   e.preventDefault();
+  if (e.target.nodeName !== 'IMG') {
+    return;
+  
+}
+
 const fullImg = e.target.dataset.source;
 const instance = basicLightbox.create(`
     <img src="${fullImg}" width="800" height="600">`)
